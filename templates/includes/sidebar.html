@@ -1,0 +1,94 @@
+<!-- Sidebar Start -->
+<div class="sidebar pb-5 bg-menu">
+    <div class="position-relative">
+        <nav class="navbar navbar-light">
+
+            <div
+                class="d-flex align-items-center justify-content-center ms-4 mb-4"
+               >
+                <a class="sidebar-brand nav-link d-flex align-items-center
+                    justify-content-center mb-1 mt-2" href="#">
+                    <div class="sidebar-brand-icon">
+                        <img class="d-flex d-block"
+                            src="/static/img/logo.png"
+                            alt=""
+                            width="40cm"
+                            height="40cm" />
+                    </div>
+                    <h5 class="text-white mt-4 mx-1">SGEI <sup>IFNMG</sup></h5>
+                </a>
+            </div>
+            <div class="container">
+                <div class="navbar-nav w-100">
+                    <div class="nav-item">
+                         <a class="nav-link" href="{% url 'core:index'%}">
+                            <i class="fas fa-home fas 5x me-2"></i>
+                            <span>Inicio</span></a>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown"><i class="fas
+                                fa-clipboard-list
+                                me-2"></i>Editais</a>
+                        <div class="dropdown-menu mx-2 border-0">
+                            <a href="{% url 'editais:criar_edital'%}"
+                                class="dropdown-item">
+                                Adicionar Edital</a>
+                            <a href="{% url 'editais:listar_editais'%}"
+                                class="dropdown-item">
+                                Lista Edital</a>
+                            <!-- <a href="% url 'editais:criar_edital'%}" class="dropdown-item ">Lista Editais</a> -->
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"><i class="far
+                                    fa-file-alt
+                                    me-2"></i>Inscrições</a>
+                            <div class="dropdown-menu mx-2 border-0">
+                                <a href="signin.html" class="dropdown-item">Lista
+                                    inscrições</a>
+                                <!-- <a href="signin.html" class="dropdown-item">Sign In</a> -->
+                            </div>
+                        </div>
+                        
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown"><i class="far fa-file-alt
+                                me-2"></i>Relatórios
+                        </a>
+                        <div class="dropdown-menu mx-2 border-0">
+                            <a href="signin.html" class="dropdown-item">Lista
+                                inscrições</a>
+                            <!-- <a href="signin.html" class="dropdown-item">Sign In</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"><i class="fas fa-users
+                                    fas-3x
+                                    me-2"></i>Usuários
+                            </a>
+                            <div class="dropdown-menu mx-2 border-0">
+                                <a href="signin.html" class="dropdown-item">Lista
+                                    inscrições</a>
+                                <!-- <a href="signin.html" class="dropdown-item">Sign In</a> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="container">
+                    <a class="btn btn-link rounded-circle sidebar-toggler
+                        d-md-none
+                        mx-5"><i
+                            class="fa fa-times"></i></a>
+                </div>
+            </div>
+        </nav></div>
+
+</div>
+
+
+
+<!-- Sidebar End -->

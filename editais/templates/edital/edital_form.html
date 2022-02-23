@@ -1,0 +1,28 @@
+{% extends 'base.html'%} {% load bootstrap5 %} {%block title %}
+{% if request.resolver_match.url_name == 'criar_edital' %}
+Cadastro de Edital
+{%else%}
+Editar Edital
+{%endif%}
+{%endblock title %}
+
+{% block content %}
+
+
+
+	<div class="container p-5">
+		<br>
+		<h4 class="text-title mx-0 mt-2"><b>
+				{% if request.resolver_match.url_name == 'criar_edital' %} Cadastro de
+				Edital {%else%} Editar Edital {%endif%}
+			</b>
+		</h4>
+
+		<form class="mt-4" method="post" enctype="multipart/form-data">
+			{% csrf_token %} {% bootstrap_form form %}
+			<a href="{% url 'editais:listar_editais'%}" class="btn btn-outline-danger">Cancelar</a>
+			<button type="submit" class="btn btn-success mx-2">Salvar</button>
+		</form>
+	</div>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{%block title%}
+Lista de Editais
+{%endblock title%}
+
+{%block content %}
+<div class="container-fluid  p-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-end">
+                <a href="{% url 'editais:criar_edital'%}" class="btn btn-primary
+                    mb-2">Adicionar</a>
+            </div>
+
+        </div>
+
+       
+            <h4 class="text-title mx-0 mt-2">
+                <b> Lista de Editais
+                </h4>
+         
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col"> Descrição</th>
+                            <th>Status</th>
+                            <th class="text-center">Opção</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for edital in editais%}
+                        <tr>
+                            <td><a href="{% url 'edital:edital_detalhe' edital.pk %}"> {{edital.titulo}} </a></td>
+                            <td>{{edital.descricao}}</td>
+                            <td>{{edital.status}}</td>
+                            <td class="text-center">
+                                <a href="{% url 'edital:editar_edital' edital.id %}" class="text-warning mx-4"> <i
+                                        class="fa fa-edit"></i></a>
+                                <a href="{% url 'edital:remover_edital' edital.id %}" class="text-danger"><i class="fa fa-times"></i></a></td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+            {% if is_paginated %}
+            {%include 'includes/pagination.html'%}
+            {% endif %}
+        </div>
+    </div>
+
+    {%endblock content %}

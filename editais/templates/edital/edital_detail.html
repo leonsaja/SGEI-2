@@ -1,0 +1,92 @@
+{% extends 'base.html'%} {%block title%} Detalhe do Edital {%endblock title%}
+{%block content%}
+<div class="container p-5">
+  <div class="row">
+    <div class="col-md-12 text-end">
+      <a
+        href="{% url 'editais:criar_pergunta' edital.id %}"
+        class="btn btn-primary mb-2"
+        >Pergunta</a
+      >
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="text-title">Detalhe do Edital</h5>
+    </div>
+
+    <div class="card-body">
+      <ul>
+        <li class="mt-2"><b> Titulo: </b> <span>{{edital.titulo}}</span></li>
+        <li class="mt-2"><b>Descricao: </b>{{edital.descricao}}</li>
+        <li class="mt-2">
+          <b>Arquivo: </b
+          ><a href="/media/{{edital.arquivo }} " target="_blank"
+            >{{MEDIA_URL}}{{ edital.arquivo}}</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    {% for per in perguntas %}
+
+    <div class="card-header pb-2">
+      <div class="title"><b>Pergunta :</b></div>
+      <div
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne2--{{per.id}}"
+        aria-expanded="false"
+        aria-controls="collapseOne2--{{per.id}}"
+      >
+        {{per.descricao}}
+      </div>
+
+      {% comment %}
+      <div
+        class="text-primary"
+        data-toggle="collapse"
+        data-target="#collapseOne2--{{per.id}}"
+        aria-expanded="false"
+        aria-controls="collapseOne2--{{per.id}}"
+      ></div>
+      {% endcomment %}
+    </div>
+
+    <div id="collapseOne2--{{per.id}}" class="collapse multi-collapse">
+      <div class="float-right">
+        <a
+          href="%url 'editais:editar_pergunta' per.pk %}"
+          class="btn btn-warning mt-4 ml-2 mr-2 mb-2"
+        >
+          Editar</a
+        >
+        <a
+          href="%url 'editais:pergunta_delete' per.id %}"
+          class="btn btn-danger mt-4 ml-2 mr-2 mb-2"
+          >Apagar</a
+        >
+      </div>
+      <div>
+        {% for alt in per.alternativas.all%}
+        <p>{{alt.descricao}}</p>
+        {%endfor%}
+      </div>
+    </div>
+    {%endfor%}
+
+    <br />
+  </div>
+  <div class="row">
+    <div class="col-md-12 ml-3 pb-3 mt-4">
+      <a
+        href="{% url 'edital:listar_editais'%}"
+        class="btn btn btn-outline-success"
+        >Voltar</a
+      >
+      <!-- <a href="{% url 'edital:editar_edital' edital.id %}" class="btn btn-warning">Editar</a> -->
+    </div>
+  </div>
+</div>
+
+{%endblock content%}

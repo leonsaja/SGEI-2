@@ -1,0 +1,61 @@
+{% extends 'base.html'%} {% load bootstrap5 %}
+
+
+{% block title %}
+{% if request.resolver_match.url_name == 'criar_pergunta' %} 
+Cadastro de Pergunta 
+{%else %}
+Editar Pergunta 
+{%endif%} 
+{% endblock title %} 
+
+
+{% block content %}
+<div class="container p-5">
+	<div class="card-title">{% if request.resolver_match.url_name == 'criar_pergunta' %} 
+                Cadastro de Pergunta 
+            {%else %}
+            Editar Pergunta 
+                {%endif%} 
+            </div>
+		
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token%}
+
+				<div class="row">
+					<div class="col-md-12 mt-1">
+						<div class="title">{{edital}}</div>
+						<br />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">{% bootstrap_form form %}</div>
+				</div>
+
+				<div class="row">
+					{{formset.management_form}} {% for alternativa in formset%}
+
+					<div class="col-12">
+						<div class="inlineform">{% bootstrap_form form=alternativa %}</div>
+					</div>
+
+					{%endfor %}
+				</div>
+
+				<div class="nav justify-content-end">
+					<a href="#" class="btn btn-danger mr-2 ml-2 mb-4">Cancelar</a>
+					<button type="submit" class="btn btn-success mb-4">Salvar</button>
+				</div>
+			</form>
+		</div>
+	
+	
+{% endblock content%} {% block scripts %} 
+<script>
+	$(function() {
+		$('.inlineform').formset({ prefix: '{{ formset.prefix }}', 
+		addText: '<i class=" fa fa-edit ">&nbsp &nbspAdicionar Alternativa', 
+		deleteText: '<br><i class="fa fa-times pb-4"> &nbsp &nbsp Excluir Alternativa', });
+		}) 
+</script>			
+{% endblock scripts %}
